@@ -36,7 +36,7 @@ header {
   text-align: center;
 
   img {
-    width: 8rem;
+    width: 12rem;
     object-fit: contain;
     margin: 3rem auto 1rem auto;
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
@@ -45,14 +45,14 @@ header {
 
 h1 {
   font-family: 'Caprasimo', cursive;
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 0 auto 3rem auto;
   color: #3f3b00;
 }
 
 #game-container {
-  max-width: 45rem;
-  margin: 3rem auto;
+  max-width: 55rem;
+  margin: 5rem auto;
   padding: 2rem;
   border-radius: 6px;
   background: linear-gradient(#383624, #282617);
@@ -63,11 +63,11 @@ h1 {
 #players {
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
+  margin: 2rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 
   li {
     display: flex;
@@ -124,7 +124,7 @@ h1 {
   &-name {
     display: inline-block;
     width: 10rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #e1dec7;
     text-transform: uppercase;
     margin: 0;
@@ -136,7 +136,7 @@ h1 {
 
   &-symbol {
     margin-left: 1rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #e1dec7;
   }
 }
