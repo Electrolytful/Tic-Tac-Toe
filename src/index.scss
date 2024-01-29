@@ -166,7 +166,7 @@ ol {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   margin: 3rem 0;
   padding: 0;
   flex-direction: column;
@@ -175,21 +175,21 @@ ol {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     margin: 0;
     padding: 0;
   }
 
   button {
-    width: 8rem;
-    height: 8rem;
+    width: 11rem;
+    height: 11rem;
     border: none;
     background: #aca788;
     color: #3f3b00;
-    font-size: 5rem;
+    font-size: 6rem;
     cursor: pointer;
     font-family: 'Caprasimo', cursive;
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 
