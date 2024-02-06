@@ -1,13 +1,10 @@
 import { useState } from "react";
-
-import Player from "./components/Player.jsx";
-import GameBoard from "./components/GameBoard.jsx";
-import Log from "./components/Log.jsx";
-import GameOver from "./components/GameOver.jsx";
-
-import handleGameBoard from "./util/handleGameBoard.js";
-import checkActivePlayer from "./util/checkActivePlayer.js";
-import checkWinner from "./util/checkWinner.js";
+import { Player, Log, GameBoard, GameOver } from "./components/index.jsx";
+import {
+  checkActivePlayer,
+  checkWinner,
+  handleGameBoard,
+} from "./util/index.jsx";
 
 const PLAYERS = {
   X: "Player 1",
