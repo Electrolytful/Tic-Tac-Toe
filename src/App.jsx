@@ -19,11 +19,13 @@ export default function App() {
 
   const activePlayer = checkActivePlayer(gameTurns);
 
-  let gameBoard = INITIAL_GAME_BOARD;
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
   gameBoard = handleGameBoard(gameBoard, gameTurns);
 
   let winner;
   winner = checkWinner(WINNING_COMBINATIONS, gameBoard);
+
+  const draw = gameTurns.length == 9 && !winner;
 
   const handleSelectCell = (rowIndex, colIndex) => {
     setGameTurns((prevTurns) => {
@@ -42,6 +44,10 @@ export default function App() {
 
       return updatedTurns;
     });
+  };
+
+  const handleRematch = () => {
+    setGameTurns([]);
   };
 
   const handlePlayerNameChangeX = (name) => {
@@ -70,7 +76,14 @@ export default function App() {
           />
         </ol>
 
-        {winner && <GameOver winner={winner === "X" ? playerNameX : playerNameO} />}
+        {(winner || draw) && (
+          <GameOver
+            winner={
+              winner === "X" ? playerNameX : draw ? undefined : playerNameO
+            }
+            onRematch={handleRematch}
+          />
+        )}
         <GameBoard onSelectCell={handleSelectCell} board={gameBoard} />
       </div>
 
