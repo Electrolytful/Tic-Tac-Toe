@@ -1,12 +1,14 @@
-export default function handleGameBoard(gameBoard, gameTurns) {
-  let board = gameBoard;
+import { INITIAL_GAME_BOARD } from "../data/initial-game-board";
+
+export default function handleGameBoard(gameTurns) {
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
 
   for (const turn of gameTurns) {
     const { cell, player } = turn;
     const { row, col } = cell;
 
-    board[row][col] = player.symbol;
+    gameBoard[row][col] = player.symbol;
   }
 
-  return board;
+  return gameBoard;
 }

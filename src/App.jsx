@@ -9,24 +9,18 @@ import handleGameBoard from "./util/handleGameBoard.js";
 import checkActivePlayer from "./util/checkActivePlayer.js";
 import checkWinner from "./util/checkWinner.js";
 
-import { INITIAL_GAME_BOARD } from "./data/initial-game-board.js";
-import { WINNING_COMBINATIONS } from "./data/winning-combinations.js";
+const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
 
 export default function App() {
+  const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
-  const [players, setPlayers] = useState({
-    X: "Player 1",
-    O: "Player 2",
-  });
 
   const activePlayer = checkActivePlayer(gameTurns);
-
-  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
-  gameBoard = handleGameBoard(gameBoard, gameTurns);
-
-  let winner;
-  winner = checkWinner(WINNING_COMBINATIONS, gameBoard, players);
-
+  const gameBoard = handleGameBoard(gameTurns);
+  const winner = checkWinner(gameBoard, players);
   const draw = gameTurns.length == 9 && !winner;
 
   const handleSelectCell = (rowIndex, colIndex) => {
@@ -66,13 +60,13 @@ export default function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="Player 1"
+            initialName={PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             onChangeName={handlePlayerNameChange}
           />
           <Player
-            initialName="Player 2"
+            initialName={PLAYERS.O}
             symbol="O"
             isActive={activePlayer === "O"}
             onChangeName={handlePlayerNameChange}
