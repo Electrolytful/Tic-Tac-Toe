@@ -14,8 +14,10 @@ import { WINNING_COMBINATIONS } from "./data/winning-combinations.js";
 
 export default function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  const [playerNameX, setPlayerNameX] = useState("Player 1");
-  const [playerNameO, setPlayerNameO] = useState("Player 2");
+  const [players, setPlayers] = useState({
+    X: "Player 1",
+    O: "Player 2",
+  });
 
   const activePlayer = checkActivePlayer(gameTurns);
 
@@ -23,7 +25,7 @@ export default function App() {
   gameBoard = handleGameBoard(gameBoard, gameTurns);
 
   let winner;
-  winner = checkWinner(WINNING_COMBINATIONS, gameBoard);
+  winner = checkWinner(WINNING_COMBINATIONS, gameBoard, players);
 
   const draw = gameTurns.length == 9 && !winner;
 
@@ -35,7 +37,7 @@ export default function App() {
         {
           cell: { row: rowIndex, col: colIndex },
           player: {
-            name: currentPlayer === "X" ? playerNameX : playerNameO,
+            name: currentPlayer === "X" ? players.X : players.O,
             symbol: currentPlayer,
           },
         },
@@ -50,12 +52,13 @@ export default function App() {
     setGameTurns([]);
   };
 
-  const handlePlayerNameChangeX = (name) => {
-    setPlayerNameX(name);
-  };
-
-  const handlePlayerNameChangeO = (name) => {
-    setPlayerNameO(name);
+  const handlePlayerNameChange = (symbol, name) => {
+    setPlayers((prevPlayers) => {
+      return {
+        ...prevPlayers,
+        [symbol]: name,
+      };
+    });
   };
 
   return (
@@ -66,21 +69,19 @@ export default function App() {
             initialName="Player 1"
             symbol="X"
             isActive={activePlayer === "X"}
-            playerNameChange={handlePlayerNameChangeX}
+            onChangeName={handlePlayerNameChange}
           />
           <Player
             initialName="Player 2"
             symbol="O"
             isActive={activePlayer === "O"}
-            playerNameChange={handlePlayerNameChangeO}
+            onChangeName={handlePlayerNameChange}
           />
         </ol>
 
         {(winner || draw) && (
           <GameOver
-            winner={
-              winner === "X" ? playerNameX : draw ? undefined : playerNameO
-            }
+            winner={draw ? undefined : winner}
             onRematch={handleRematch}
           />
         )}

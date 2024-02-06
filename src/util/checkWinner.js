@@ -1,4 +1,4 @@
-export default function checkWinner(win_combinations, gameBoard) {
+export default function checkWinner(win_combinations, gameBoard, players) {
   for (const combination of win_combinations) {
     const firstCellSymbol = gameBoard[combination[0].row][combination[0].col];
     const secondCellSymbol = gameBoard[combination[1].row][combination[1].col];
@@ -9,7 +9,7 @@ export default function checkWinner(win_combinations, gameBoard) {
       firstCellSymbol === secondCellSymbol &&
       firstCellSymbol === thirdCellSymbol
     ) {
-      return firstCellSymbol;
+      return players[firstCellSymbol];
     }
   }
 }
