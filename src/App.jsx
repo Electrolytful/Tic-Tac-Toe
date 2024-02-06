@@ -3,6 +3,7 @@ import { useState } from "react";
 import Player from "./components/Player.jsx";
 import GameBoard from "./components/GameBoard.jsx";
 import Log from "./components/Log.jsx";
+import GameOver from "./components/GameOver.jsx";
 
 import handleGameBoard from "./util/handleGameBoard.js";
 import checkActivePlayer from "./util/checkActivePlayer.js";
@@ -21,7 +22,8 @@ export default function App() {
   let gameBoard = INITIAL_GAME_BOARD;
   gameBoard = handleGameBoard(gameBoard, gameTurns);
 
-  let winner = checkWinner(WINNING_COMBINATIONS, gameBoard);
+  let winner;
+  winner = checkWinner(WINNING_COMBINATIONS, gameBoard);
 
   const handleSelectCell = (rowIndex, colIndex) => {
     setGameTurns((prevTurns) => {
@@ -68,9 +70,7 @@ export default function App() {
           />
         </ol>
 
-        {winner && (
-          <p>{winner === "X" ? playerNameX : playerNameO} is the winner!</p>
-        )}
+        {winner && <GameOver winner={winner === "X" ? playerNameX : playerNameO} />}
         <GameBoard onSelectCell={handleSelectCell} board={gameBoard} />
       </div>
 

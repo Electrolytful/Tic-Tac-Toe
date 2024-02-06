@@ -10,8 +10,6 @@ export default function checkWinner(win_combinations, gameBoard) {
       firstCellSymbol === thirdCellSymbol
     ) {
       return firstCellSymbol;
-    } else {
-      return undefined;
     }
   }
 }
