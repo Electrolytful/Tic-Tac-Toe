@@ -1,0 +1,24 @@
+#log {
+  font-size: 1.7rem;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    width: 60%;
+    padding: .8rem 1.2rem;
+    border-radius: 1rem;
+    animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1)
+      forwards;
+
+    &.highlighted {
+      background-color: rgba($color-black, .8);
+      color: $color-primary;
+    }
+  }
+}

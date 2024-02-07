@@ -1,0 +1,41 @@
+// styling for the game container
+#game-container {
+  padding: 4rem;
+  border-radius: 0.8rem;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+// styling for the game board inside the container
+#game-board {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem 0;
+  padding: 0;
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    width: 11rem;
+    height: 11rem;
+    border: 2px solid $color-primary-light;
+    border-radius: 0.5rem;
+    background: transparent;
+    color: $color-primary;
+    font-size: 6rem;
+    cursor: pointer;
+    font-family: $font-caprasimo;
+    padding: 2rem;
+  }
+}
